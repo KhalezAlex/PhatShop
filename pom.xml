@@ -17,6 +17,7 @@
 		<java.version>21</java.version>
 		<postgre>42.6.0</postgre>
 		<lombok>1.18.28</lombok>
+		<data_jpa>3.2.0-M3</data_jpa>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -66,7 +67,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
-			<version>3.2.0-M3</version>
+			<version>${data_jpa}</version>
 		</dependency>
 	</dependencies>
 
