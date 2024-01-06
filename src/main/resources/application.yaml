@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  error:
+    path: /error
+    whitelabel:
+      enabled: false
+    servlet:
+      context-path: /
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/PHAT
+    username: postgres
+    password: rootroot1
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    #      ddl-auto: create-drop
+    show-sql: true
+
+jwt:
+  password:
+    encoder:
+      secret: FZK2DZ82odqS13e8aENggaMbb_fAkl-nJL4AEV8X43g
+      iteration: 64
+      keylength: 256
+  secret: pupXUeElBo21aCp931ejt3gcmXNOPA14y1AePl76ycdI0TE4/k8YTK8HTnuDy37O
+  lifetime: 30m
