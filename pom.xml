@@ -20,6 +20,7 @@
 		<data_jpa>3.2.0-M3</data_jpa>
 		<jjwt-api>0.11.5</jjwt-api>
 		<jjwt-impl>0.11.5</jjwt-impl>
+		<jjwt-jackson>0.11.5</jjwt-jackson>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -64,7 +65,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>3.2.0-M3</version>
+			<version>${data_jpa}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -75,6 +76,16 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
 			<version>${jjwt-api}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>${jjwt-impl}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${jjwt-jackson}</version>
 		</dependency>
 	</dependencies>
 
@@ -94,5 +105,11 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+	</repositories>
 </project>
