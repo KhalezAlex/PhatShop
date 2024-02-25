@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import ru.phatshop.encoder.PBFDK2Encoder;
 import ru.phatshop.exeption.AuthError;
 import ru.phatshop.jwt.JwtTokenUtils;
-import ru.phatshop.model.dao.UserService;
+import ru.phatshop.model.dao.user.UserService;
 import ru.phatshop.model.dto.JwtRequest;
 import ru.phatshop.model.dto.JwtResponse;
 import ru.phatshop.model.dto.UserDto;
@@ -51,7 +51,8 @@ public class AuthService {
         User user = User.builder()
                 .username(UserDto.getUsername())
                 .password(encoder.encode(UserDto.getPassword()))
-                .role(Role.valueOf(UserDto.getRole()))
+                .role(Role.USER)
+//                .role(Role.valueOf(UserDto.getRole()))
                 .build();
         service.save(user);
         return ResponseEntity.ok("Пользователь "+ UserDto.getUsername() +" создан");

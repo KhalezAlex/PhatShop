@@ -1,4 +1,4 @@
-package ru.phatshop.model.dao;
+package ru.phatshop.model.dao.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

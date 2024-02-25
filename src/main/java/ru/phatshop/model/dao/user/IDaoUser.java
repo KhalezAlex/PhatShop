@@ -1,5 +1,6 @@
-package ru.phatshop.model.dao;
+package ru.phatshop.model.dao.user;
 
+import ru.phatshop.model.dao.IDaoDB;
 import ru.phatshop.model.entities.User;
 
 import java.util.Optional;

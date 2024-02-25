@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
@@ -20,7 +21,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests
                                 .requestMatchers("/register/").hasRole("ADMIN")
                                 .requestMatchers("/register/").hasAnyRole("USER")
@@ -28,7 +29,7 @@ public class SecurityConfig {
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
 //                        .requestMatchers("").authenticated()
 //                        .requestMatchers("/registration").anonymous()
-                                .requestMatchers("/registration", "/auth").permitAll()
+                                .requestMatchers("/registration", "/auth", "/image").permitAll()
                                 .anyRequest().authenticated()
                 )
                 //Отключаем сессие у реста в куках

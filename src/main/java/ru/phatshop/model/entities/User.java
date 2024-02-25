@@ -20,10 +20,10 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "username")
+    @Column(name = "username", updatable = false, nullable = false)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "role")
@@ -33,6 +33,11 @@ public class User implements UserDetails {
     @ToString.Include(name = "password")
     private String maskPassword(){
         return "********";
+    }
+
+    @ToString.Include(name = "role")
+    private String maskRole(){
+        return " ";
     }
 
     @Override
