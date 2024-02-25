@@ -13,6 +13,9 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import ru.phatshop.jwt.JwtRequestFilter;
 
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -23,13 +26,12 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests
-                                .requestMatchers("/register/").hasRole("ADMIN")
-                                .requestMatchers("/register/").hasAnyRole("USER")
-                                .requestMatchers("/register/").hasRole("SELLER")
-                                .requestMatchers("/admin/**").hasRole("ADMIN")
 //                        .requestMatchers("").authenticated()
 //                        .requestMatchers("/registration").anonymous()
-                                .requestMatchers("/registration", "/auth", "/image").permitAll()
+                                .requestMatchers("/registration", "/auth", "/service/**").permitAll()
+                                .requestMatchers("/api/manager/create").hasRole("ADMIN")
+//                                .requestMatchers( "/").hasAnyRole("USER")
+//                                .requestMatchers(GET, "/api/**").hasRole("SELLER")
                                 .anyRequest().authenticated()
                 )
                 //Отключаем сессие у реста в куках

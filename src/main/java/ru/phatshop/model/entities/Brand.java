@@ -26,5 +26,5 @@ public class Brand {
     private Set<Goods> goods;
 
     @Lob
-    private byte[] image;
+    private String image;
 }

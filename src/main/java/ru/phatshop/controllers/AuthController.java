@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.phatshop.model.dto.JwtRequest;
 import ru.phatshop.model.dto.UserDto;
 import ru.phatshop.model.service.AuthService;
-import java.io.IOException;
 
 @RestController
+@RequestMapping(path = "/")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -23,14 +23,5 @@ public class AuthController {
     public ResponseEntity<?> createNewUser(@RequestBody UserDto userDto){
         return service.createNewUser(userDto);
     }
-
-    @GetMapping(value = "/image", produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<?> getTableImageFile() throws IOException {
-//        String imageStr = "C:/Users/svytk/OneDrive/Рабочий стол/photo_2023-04-16_16-36-25.jpg";
-        String imageStr = "C:/Users/svytk/OneDrive/Рабочий%20стол/photo_2023-04-16_16-36-25.jpg";
-//        String imageStr = "https://disk.yandex.ru/i/N_HWMEF5XwYs7Q";
-        byte[] imageFile = imageStr.getBytes();
-        return ResponseEntity.ok(imageFile);
-}
 
 }

@@ -57,4 +57,36 @@ public class AuthService {
         service.save(user);
         return ResponseEntity.ok("Пользователь "+ UserDto.getUsername() +" создан");
     }
+
+    public ResponseEntity<?> createNewManager(@RequestBody UserDto UserDto){
+        if (!UserDto.getPassword().equals(UserDto.getConfirmPassword())){
+            return new ResponseEntity<>(new AuthError(HttpStatus.BAD_REQUEST.value(), "Пароли не совпадают"), HttpStatus.BAD_REQUEST);
+        }
+        if(service.findUserByName(UserDto.getUsername()).isPresent()){
+            return new ResponseEntity<>(new AuthError(HttpStatus.BAD_REQUEST.value(), "Пользователь с указанным именем уже существует"), HttpStatus.BAD_REQUEST);
+        }
+        User user = User.builder()
+                .username(UserDto.getUsername())
+                .password(encoder.encode(UserDto.getPassword()))
+                .role(Role.SELLER)
+                .build();
+        service.save(user);
+        return ResponseEntity.ok("Пользователь "+ UserDto.getUsername() +" создан");
+    }
+
+    public ResponseEntity<?> createNewAdmin(@RequestBody UserDto UserDto){
+        if (!UserDto.getPassword().equals(UserDto.getConfirmPassword())){
+            return new ResponseEntity<>(new AuthError(HttpStatus.BAD_REQUEST.value(), "Пароли не совпадают"), HttpStatus.BAD_REQUEST);
+        }
+        if(service.findUserByName(UserDto.getUsername()).isPresent()){
+            return new ResponseEntity<>(new AuthError(HttpStatus.BAD_REQUEST.value(), "Пользователь с указанным именем уже существует"), HttpStatus.BAD_REQUEST);
+        }
+        User user = User.builder()
+                .username(UserDto.getUsername())
+                .password(encoder.encode(UserDto.getPassword()))
+                .role(Role.ADMIN)
+                .build();
+        service.save(user);
+        return ResponseEntity.ok("Пользователь "+ UserDto.getUsername() +" создан");
+    }
 }

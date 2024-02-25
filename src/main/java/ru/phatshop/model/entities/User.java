@@ -20,7 +20,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "username", updatable = false, nullable = false)
+    @Column(name = "username", updatable = false, nullable = false, unique = true)
     private String username;
 
     @Column(name = "password", nullable = false)
@@ -29,6 +29,17 @@ public class User implements UserDetails {
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(String username, String password, Role role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 
     @ToString.Include(name = "password")
     private String maskPassword(){

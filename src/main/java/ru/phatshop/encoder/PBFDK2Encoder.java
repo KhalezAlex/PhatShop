@@ -2,6 +2,7 @@ package ru.phatshop.encoder;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -12,6 +13,7 @@ import java.util.Base64;
 /**
  * Кодировщик паролей
  */
+@Service
 public class PBFDK2Encoder implements PasswordEncoder {
     @Value("${jwt.password.encoder.secret}")
     private String secret;

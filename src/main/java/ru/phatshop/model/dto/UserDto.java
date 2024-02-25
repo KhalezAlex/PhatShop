@@ -13,5 +13,11 @@ public class UserDto {
     private String password;
     @NotEmpty(message = "Confirm password cannot be empty")
     private String confirmPassword;
-//    private String role;
+    private String role;
+
+    public UserDto(String username, String password, String confirmPassword) {
+        this.username = username;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+    }
 }
